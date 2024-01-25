@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content="width=device-width, initial-scale=1">
+        <title>JS challenge RPS</title>
+    </head> 
+    <body>
+
+        <button type="button" onclick="playRPS('rock', computerChoose())">Rock</button>
+        <button type="button" onclick="playRPS('paper', computerChoose())">Paper</button>
+        <button type="button" onclick="playRPS('scissors', computerChoose())">Scissors</button>
+
+        <p id="user-choice"></p>
+        <p id="computer-choice"></p>
+        <p id="winner"></p>
+        
+        <script>
+          const rps = ['rock', 'paper','scissors']
+
+          function computerChoose(){
+            let computerChoice = rps[Math.floor(Math.random()*rps.length)]
+
+            return computerChoice
+          } 
+
+          function chooseWinner(user, computer){
+            if (user === computer) {
+              document.getElementById("winner").innerHTML ="It's a tie!";
+            } else if (user === "rock" && computer === "scissors") {
+              document.getElementById("winner").innerHTML ="You won!";
+            } else if (user === "scissors" && computer === "paper") {
+              document.getElementById("winner").innerHTML ="You won!";
+            } else if (user === "paper" && computer === "rock") {
+              document.getElementById("winner").innerHTML ="You won!";
+            } else {
+              document.getElementById("winner").innerHTML ="Computer won!";
+
+            }
+          }
+
+          function playRPS(option, computerChoice) {
+              const userChoice = option;
+              document.getElementById("user-choice").innerHTML =`You choose ${userChoice}`;
+              document.getElementById("computer-choice").innerHTML =`Computer choose ${computerChoice}`;
+              chooseWinner(userChoice, computerChoice)               
+          }
+
+        </script>
+    </body>
